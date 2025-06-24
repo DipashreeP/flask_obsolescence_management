@@ -6,7 +6,12 @@ def query_ollama(prompt):
         "http://localhost:11434/api/generate",
         json={"model": "codellama", "prompt": prompt}
     )
-    return response.json()["response"]
+    resp_json = response.json()
+    if "response" in resp_json:
+        return resp_json["response"]
+    else:
+        print("Unexpected response from Ollama API:", resp_json)
+        return "Error: Unexpected response from Ollama API"
 
 def query_bedrock(prompt):
     bedrock = boto3.client('bedrock-runtime', region_name="us-east-1")

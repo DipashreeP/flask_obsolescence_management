@@ -1,4 +1,5 @@
 flask==2.1.1
+Werkzeug==2.0.3
 requests
 streamlit
 pytest
@@ -7,4 +8,4 @@ safety
 black
 ruff
 bandit
-boto3
+boto3 
